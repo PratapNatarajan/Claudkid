@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Video</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        iframe {
+            width: 90%;
+            height: 90%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Get the URL parameter
+        const params = new URLSearchParams(window.location.search);
+        const videoURL = params.get('url');
+
+        // Validate the URL and embed it
+        if (videoURL) {
+            document.body.innerHTML = `
+                <iframe src="${videoURL}" allowfullscreen></iframe>
+            `;
+        } else {
+            document.body.innerHTML = `
+                <h1 style="color: white; text-align: center;">
+                    No video URL provided. Add '?url=YOUR_VIDEO_LINK' to the URL.
+                </h1>
+            `;
+        }
+    </script>
+</body>
+</html>
